@@ -481,6 +481,18 @@ config HISI_HIKEY_USB
 	  switching between the dual-role USB-C port and the USB-A host ports
 	  using only one USB controller.
 
+config BATTERY_SAVER
+	bool "Battery saver mode for kernelspace"
+	default y
+	help
+	  This driver creates a sysfs toggle that can be enabled when
+	  battery saver mode is activated in userspace, and provides
+	  functions to check the status of battery saver and to activate
+	  it from anywhere in the kernel.
+
+	  The former can be used to disable features that may otherwise
+	  drain battery faster, such as CPU and DDR boosting.
+
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"
