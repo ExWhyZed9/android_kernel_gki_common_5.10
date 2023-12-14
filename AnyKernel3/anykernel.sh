@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Falcon-X By Priyanshu
+kernel.string=ZenX By ExWhyZed9
 do.devicecheck=0
 do.modules=0
 do.systemless=0

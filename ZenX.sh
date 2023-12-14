@@ -27,7 +27,7 @@ TANGGAL=$(date +"%F%S")
 
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
 
-FINAL_KERNEL_ZIP=Falcon-X-${DEVICE}-${TANGGAL}.zip
+FINAL_KERNEL_ZIP=ZenX-${DEVICE}-${TANGGAL}.zip
 
 # Verbose Build
 VERBOSE=0
@@ -42,7 +42,7 @@ export CROSS_COMPILE=$MAIN/clang-r416183b/bin/aarch64-linux-gnu- CC=clang CXX=cl
 
 export ARCH=arm64
 export SUBARCH=$ARCH
-export KBUILD_BUILD_USER=Priyanshu
+export KBUILD_BUILD_USER=ExWhyZed9
 
 # Speed up build process
 MAKE="./makeparallel"
@@ -90,24 +90,12 @@ ls $PWD/out/arch/arm64/boot/Image.gz
 ls $PWD/out/arch/arm64/boot/dtbo.img
 ls $PWD/out/arch/arm64/boot/dtb.img
 
-       if ! [ -a "$PWD/out/arch/arm64/boot/Image.gz" ];
-          then
-              echo -e "$blue***********************************************"
-              echo "          BUILD THROWS ERRORS         "
-              echo -e "***********************************************$nocol"
-              rm -rf out/
-              for i in *.log
-              do
-              curl -F "document=@$i" --form-string "caption=" "https://api.telegram.org/bot${BOT_TOKEN}/sendDocument?chat_id=${CHAT_ID}&parse_mode=HTML"
-              done
-              rm -rf error.log
-              exit 1
-          else
+     
              echo -e "$blue***********************************************"
              echo "    KERNEL COMPILATION FINISHED, STARTING ZIPPING         "
              echo -e "***********************************************$nocol"
              rm -rf error.log 
-       fi
+       
 
 ##----------------------------------------------------------##
 
