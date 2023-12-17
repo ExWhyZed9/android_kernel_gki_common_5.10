@@ -61,11 +61,9 @@ EXPORT_SYMBOL(of_graph_is_present);
  * @elem_size:	size of the individual element
  *
  * Search for a property in a device node and count the number of elements of
- * size elem_size in it.
- *
- * Return: The number of elements on sucess, -EINVAL if the property does not
- * exist or its length does not match a multiple of elem_size and -ENODATA if
- * the property does not have a value.
+ * size elem_size in it. Returns number of elements on sucess, -EINVAL if the
+ * property does not exist or its length does not match a multiple of elem_size
+ * and -ENODATA if the property does not have a value.
  */
 int of_property_count_elems_of_size(const struct device_node *np,
 				const char *propname, int elem_size)
@@ -97,9 +95,8 @@ EXPORT_SYMBOL_GPL(of_property_count_elems_of_size);
  * @len:	if !=NULL, actual length is written to here
  *
  * Search for a property in a device node and valid the requested size.
- *
- * Return: The property value on success, -EINVAL if the property does not
- * exist, -ENODATA if property does not have a value, and -EOVERFLOW if the
+ * Returns the property value on success, -EINVAL if the property does not
+ *  exist, -ENODATA if property does not have a value, and -EOVERFLOW if the
  * property data is too small or too large.
  *
  */
@@ -132,9 +129,7 @@ static void *of_find_property_value_of_size(const struct device_node *np,
  * @out_value:	pointer to return value, modified only if no error.
  *
  * Search for a property in a device node and read nth 32-bit value from
- * it.
- *
- * Return: 0 on success, -EINVAL if the property does not exist,
+ * it. Returns 0 on success, -EINVAL if the property does not exist,
  * -ENODATA if property does not have a value, and -EOVERFLOW if the
  * property data isn't large enough.
  *
@@ -166,9 +161,7 @@ EXPORT_SYMBOL_GPL(of_property_read_u32_index);
  * @out_value:	pointer to return value, modified only if no error.
  *
  * Search for a property in a device node and read nth 64-bit value from
- * it.
- *
- * Return: 0 on success, -EINVAL if the property does not exist,
+ * it. Returns 0 on success, -EINVAL if the property does not exist,
  * -ENODATA if property does not have a value, and -EOVERFLOW if the
  * property data isn't large enough.
  *
@@ -203,14 +196,12 @@ EXPORT_SYMBOL_GPL(of_property_read_u64_index);
  *		sz_min will be read.
  *
  * Search for a property in a device node and read 8-bit value(s) from
- * it.
- *
- * dts entry of array should be like:
- *  ``property = /bits/ 8 <0x50 0x60 0x70>;``
- *
- * Return: The number of elements read on success, -EINVAL if the property
+ * it. Returns number of elements read on success, -EINVAL if the property
  * does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
  * if the property data is smaller than sz_min or longer than sz_max.
+ *
+ * dts entry of array should be like:
+ *	property = /bits/ 8 <0x50 0x60 0x70>;
  *
  * The out_values is modified only if a valid u8 value can be decoded.
  */
@@ -253,14 +244,12 @@ EXPORT_SYMBOL_GPL(of_property_read_variable_u8_array);
  *		sz_min will be read.
  *
  * Search for a property in a device node and read 16-bit value(s) from
- * it.
- *
- * dts entry of array should be like:
- *  ``property = /bits/ 16 <0x5000 0x6000 0x7000>;``
- *
- * Return: The number of elements read on success, -EINVAL if the property
+ * it. Returns number of elements read on success, -EINVAL if the property
  * does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
  * if the property data is smaller than sz_min or longer than sz_max.
+ *
+ * dts entry of array should be like:
+ *	property = /bits/ 16 <0x5000 0x6000 0x7000>;
  *
  * The out_values is modified only if a valid u16 value can be decoded.
  */
@@ -303,9 +292,7 @@ EXPORT_SYMBOL_GPL(of_property_read_variable_u16_array);
  *		sz_min will be read.
  *
  * Search for a property in a device node and read 32-bit value(s) from
- * it.
- *
- * Return: The number of elements read on success, -EINVAL if the property
+ * it. Returns number of elements read on success, -EINVAL if the property
  * does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
  * if the property data is smaller than sz_min or longer than sz_max.
  *
@@ -344,9 +331,7 @@ EXPORT_SYMBOL_GPL(of_property_read_variable_u32_array);
  * @out_value:	pointer to return value, modified only if return value is 0.
  *
  * Search for a property in a device node and read a 64-bit value from
- * it.
- *
- * Return: 0 on success, -EINVAL if the property does not exist,
+ * it. Returns 0 on success, -EINVAL if the property does not exist,
  * -ENODATA if property does not have a value, and -EOVERFLOW if the
  * property data isn't large enough.
  *
@@ -381,9 +366,7 @@ EXPORT_SYMBOL_GPL(of_property_read_u64);
  *		sz_min will be read.
  *
  * Search for a property in a device node and read 64-bit value(s) from
- * it.
- *
- * Return: The number of elements read on success, -EINVAL if the property
+ * it. Returns number of elements read on success, -EINVAL if the property
  * does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
  * if the property data is smaller than sz_min or longer than sz_max.
  *
@@ -425,11 +408,10 @@ EXPORT_SYMBOL_GPL(of_property_read_variable_u64_array);
  *		return value is 0.
  *
  * Search for a property in a device tree node and retrieve a null
- * terminated string value (pointer to data, not a copy).
- *
- * Return: 0 on success, -EINVAL if the property does not exist, -ENODATA if
- * property does not have a value, and -EILSEQ if the string is not
- * null-terminated within the length of the property data.
+ * terminated string value (pointer to data, not a copy). Returns 0 on
+ * success, -EINVAL if the property does not exist, -ENODATA if property
+ * does not have a value, and -EILSEQ if the string is not null-terminated
+ * within the length of the property data.
  *
  * The out_string pointer is modified only if a valid string can be decoded.
  */
@@ -793,7 +775,7 @@ EXPORT_SYMBOL(of_graph_get_remote_port_parent);
  * @node: pointer to a local endpoint device_node
  *
  * Return: Remote port node associated with remote endpoint node linked
- * to @node. Use of_node_put() on it when done.
+ *	   to @node. Use of_node_put() on it when done.
  */
 struct device_node *of_graph_get_remote_port(const struct device_node *node)
 {
@@ -826,7 +808,7 @@ EXPORT_SYMBOL(of_graph_get_endpoint_count);
  * @endpoint: identifier (value of reg property) of the endpoint node
  *
  * Return: Remote device node associated with remote endpoint node linked
- * to @node. Use of_node_put() on it when done.
+ *	   to @node. Use of_node_put() on it when done.
  */
 struct device_node *of_graph_get_remote_node(const struct device_node *node,
 					     u32 port, u32 endpoint)
