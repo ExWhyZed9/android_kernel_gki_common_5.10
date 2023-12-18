@@ -3712,7 +3712,6 @@ restart:
 		sc.reclaim_idx = highest_zoneidx;
 
 		simple_lmk_decide_reclaim(sc.priority);
-		sc.reclaim_idx = classzone_idx;
 
 		/*
 		 * If the number of buffer_heads exceeds the maximum allowed
