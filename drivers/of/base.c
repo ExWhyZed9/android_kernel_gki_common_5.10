@@ -796,6 +796,10 @@ EXPORT_SYMBOL(of_get_next_available_child);
 /**
  * of_get_next_cpu_node - Iterate on cpu nodes
  * @prev:	previous child of the /cpus node, or NULL to get first
+ *
+ * Unusable CPUs (those with the status property set to "fail" or "fail-...")
+ * will be skipped.
+ *
  * Return: A cpu node pointer with refcount incremented, use of_node_put()
  * on it when done. Returns NULL when prev is the last child. Decrements
  * the refcount of prev.
