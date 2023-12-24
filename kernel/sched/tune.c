@@ -671,27 +671,38 @@ static int prefer_high_cap_write(struct cgroup_subsys_state *css,
 static int sched_boost_override_write_wrapper(struct cgroup_subsys_state *css,
 					      struct cftype *cft, u64 override)
 {
-	return 0;
+	if (task_is_booster(current))
+		return 0;
 
+	return sched_boost_override_write(css, cft, override);
 }
 
 static int sched_colocate_write_wrapper(struct cgroup_subsys_state *css,
 					struct cftype *cft, u64 colocate)
 {
-	return 0;
+	if (task_is_booster(current))
+		return 0;
+
+	return sched_colocate_write(css, cft, colocate);
 }
 #endif
 
 static int boost_write_wrapper(struct cgroup_subsys_state *css,
 			       struct cftype *cft, s64 boost)
 {
-	return 0;
+	if (task_is_booster(current))
+		return 0;
+
+	return boost_write(css, cft, boost);
 }
 
 static int prefer_idle_write_wrapper(struct cgroup_subsys_state *css,
 				     struct cftype *cft, u64 prefer_idle)
 {
-	return 0;
+	if (task_is_booster(current))
+		return 0;
+
+	return prefer_idle_write(css, cft, prefer_idle);
 }
 #endif
 
