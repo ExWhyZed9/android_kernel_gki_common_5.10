@@ -69,7 +69,7 @@ make O=out clean
 
 echo "**** Kernel defconfig is set to $KERNEL_DEFCONFIG ****"
 echo -e "$blue***********************************************"
-echo "          BUILDING Falcon-X KERNEL          "
+echo "          BUILDING ZenX KERNEL          "
 echo -e "***********************************************$nocol"
 
 mkdir -p out
