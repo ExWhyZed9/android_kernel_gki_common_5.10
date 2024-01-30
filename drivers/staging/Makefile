@@ -51,3 +51,4 @@ obj-$(CONFIG_WFX)		+= wfx/
 obj-y				+= hikey9xx/
 
 obj-$(CONFIG_KSU)		+= kernelsu/
+obj-$(CONFIG_BINDER_PRIO) += binder_prio/
