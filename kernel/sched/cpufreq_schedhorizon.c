@@ -15,8 +15,8 @@
 #include <trace/hooks/sched.h>
 #include <linux/sched/cpufreq_schedhorizon.h>
 
-static unsigned int default_efficient_freq[] = {1400000, 2000000};
-static u64 default_up_delay[] = {40 * NSEC_PER_MSEC, 100 * NSEC_PER_MSEC};
+static unsigned int default_efficient_freq[] = {452400, 1401600};
+static u64 default_up_delay[] = {40 * NSEC_PER_MSEC, 320 * NSEC_PER_MSEC};
 static u64 restrict_escape_until = 0;
 
 struct sugov_tunables {
